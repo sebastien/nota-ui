@@ -1,0 +1,12 @@
+[submodule "deps/uijs"]
+	path = deps/uijs
+	url = git@github.com:sebastien/ui.js.git
+[submodule "deps/texto"]
+	path = deps/texto
+	url = git@github.com:sebastien/texto.git
+[submodule "deps/extra"]
+	path = deps/extra
+	url = git@github.com:sebastien/extra.git
+[submodule "deps/nota"]
+	path = deps/nota
+	url = git@github.com:sebastien/nota.git
