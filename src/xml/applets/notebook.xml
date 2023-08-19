@@ -1,0 +1,31 @@
+<?xml-stylesheet type="text/xsl" media="screen" href="../uijs.xslt"?>
+<UI xmlns="https://github.com/sebastien/uijs" xmlns:do="https://github.com/sebastien/uijs#do" xmlns:on="https://github.com/sebastien/uijs#on" xmlns:out="https://github.com/sebastien/uijs#out" xmlns:s="https://github.com/sebastien/uijs#s" xmlns:x="https://github.com/sebastien/uijs#x" version="1.0">
+    <import module="@nota" path="/lib/js/nota" />
+    <import module="@ui" path="/lib/js/ui" />
+    <Applet name="Notebook">
+        <Imports>
+            <x:NoteList />
+            <x:NoteView />
+        </Imports>
+        <View>
+            <s:Notebook class="fit-screen">
+                <s:Content class="columns fit">
+                    <s:Sidebar class="fit-h bd-r pad fixed" width="260px">
+						<x:NoteList
+							in:notes="notes"
+						/>
+                    </s:Sidebar>
+                    <s:Main class="grow stack fit-h" max-width="80ch">
+						<x:NoteView />
+                    </s:Main>
+                </s:Content>
+            </s:Notebook>
+        </View>
+        <Script>
+<![CDATA[
+        import Notebook from "@nota/components/Notebook.js";
+        import NoteView from "@nota/components/NoteView.js";
+  ]]>
+        </Script>
+    </Applet>
+</UI>

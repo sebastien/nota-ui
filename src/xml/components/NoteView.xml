@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="../uijs.xslt"?>
+<UI xmlns="https://github.com/sebastien/uijs" xmlns:do="https://github.com/sebastien/uijs#do" xmlns:on="https://github.com/sebastien/uijs#on" xmlns:out="https://github.com/sebastien/uijs#out" xmlns:s="https://github.com/sebastien/uijs#s" xmlns:x="https://github.com/sebastien/uijs#x" version="1.0">
+    <Component name="NoteView">
+        <Description>
+<![CDATA[
+      Editable view of a node.
+    ]]>
+        </Description>
+        <View>
+            <s:NoteView>
+                <s:Body>
+                    <slot out:content="html|html" />
+                </s:Body>
+            </s:NoteView>
+        </View>
+    <Data>
+<![CDATA[
+			{html:"<div>Hello, <em>World</em>!</div>"}
+         ]]>
+    </Data>
+    </Component>
+</UI>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="../uijs.xslt"?>
+<UI xmlns="https://github.com/sebastien/uijs" xmlns:do="https://github.com/sebastien/uijs#do" xmlns:on="https://github.com/sebastien/uijs#on" xmlns:out="https://github.com/sebastien/uijs#out" xmlns:s="https://github.com/sebastien/uijs#s" xmlns:x="https://github.com/sebastien/uijs#x" version="1.0">
+    <Component name="NoteList">
+        <Description>
+<![CDATA[
+      List of notes
+    ]]>
+        </Description>
+        <View>
+            <s:NoteList>
+                <ul>
+                    <slot out:content=".items.*">
+                        <li class="selectable item" tabindex="0" out:data-key=".">
+                            <slot out:content="." />
+                        </li>
+                    </slot>
+                </ul>
+            </s:NoteList>
+        </View>
+        <Data>
+<![CDATA[
+                                {"items":["a", "b", "c", "c/d", "e"]}
+         ]]>
+        </Data>
+    </Component>
+</UI>
