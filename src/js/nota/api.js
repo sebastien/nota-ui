@@ -2,8 +2,20 @@ class HTTPBridge {
   constructor(prefix) {
     this.prefix = prefix;
   }
-  GET(path) {
-    return fetch(`${this.prefix}${path}`).then((_) => _.json());
+  async GET(path) {
+    const res = await fetch(`${this.prefix}${path}`);
+    if (!res.ok) {
+      throw new Error("Request failed");
+    }
+    const contentType = res.headers.get("Content-Type");
+
+    if (contentType.includes("application/json")) {
+      return res.json();
+    } else if (contentType.includes("text/html")) {
+      return res.text();
+    } else {
+      return res.text();
+    }
   }
 }
 class APIClient {
@@ -12,6 +24,9 @@ class APIClient {
   }
   listNotes() {
     return this.bridge.GET("notes");
+  }
+  renderNote(note) {
+    return this.bridge.GET(`note/${note}.html`);
   }
 }
 

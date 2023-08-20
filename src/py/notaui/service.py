@@ -6,16 +6,16 @@ import texto
 
 
 class NotesService(Service):
-    PREFIX = "/api/notes"
+    PREFIX = "/api/"
 
     def init(self):
         self.notes: LocalOperator = LocalOperator(LocalStore(Path("data/notes")))
 
-    @on(GET="")
+    @on(GET="notes")
     def listNotes(self, request: HTTPRequest) -> HTTPResponse:
         return request.returns(self.notes.listNotes())
 
-    @on(GET="/{path:rest}/{start:int}:{end:int}")
+    @on(GET="note/{path:rest}/{start:int}:{end:int}")
     def getNoteRange(
         self, request: HTTPRequest, path: str, start: int, end: int
     ) -> HTTPResponse:
@@ -25,7 +25,7 @@ class NotesService(Service):
         else:
             return request.returns(self.notes.readFragment(path, start, end))
 
-    @on(GET="/{path:rest}.html")
+    @on(GET="note/{path:rest}.html")
     def getNoteHTML(self, request: HTTPRequest, path: str) -> HTTPResponse:
         if not self.notes.hasNote(path):
             return request.notFound()
@@ -33,7 +33,7 @@ class NotesService(Service):
             parsed = texto.parse(self.notes.readNote(path), offsets=True)
             return request.respond(texto.render(parsed), b"text/html")
 
-    @on(GET="/{path:rest}.nd")
+    @on(GET="note/{path:rest}.nd")
     def getNoteSource(self, request: HTTPRequest, path: str) -> HTTPResponse:
         print("PATH", path)
         if not self.notes.hasNote(path):
